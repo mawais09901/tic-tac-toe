@@ -4,7 +4,7 @@ const GameBoard = (function () {
 
     const getBoard = () => board;
 
-    return { getBoard};
+    return { getBoard };
 
 })();
 
@@ -12,7 +12,7 @@ const CreatePlayer = (name, marker) => {
     return { name, marker };
 }
 
-const GameController = (function () {
+const GameController = (function (doc) {
 
     const board = GameBoard.getBoard();
 
@@ -50,32 +50,72 @@ const GameController = (function () {
 
         }
 
-        if(CheckWinner(marker)){
+        if (CheckWinner(marker)) {
             console.log(`${currentPlayer.name} Marker:${currentPlayer.marker} is Winner!`);
             gameOver = true;
         }
 
-        else if(checkTies()){
+        else if (checkTies()) {
             console.log("Tied Up!");
             gameOver = true;
         }
 
-        currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer; 
+        currentPlayer = currentPlayer === firstPlayer ? secondPlayer : firstPlayer;
 
     }
 
     function CheckWinner(marker) {
-        return winningCombos.some(combo => combo.every(index => 
+        return winningCombos.some(combo => combo.every(index =>
             board[index] === marker
         ))
     }
 
-    function checkTies(){
+    function checkTies() {
         return board.every(index => index !== "");
     }
 
     const getCurrentPlayer = () => currentPlayer;
+    
+    const getGameOver = () => gameOver;
 
-    return{playRound,getCurrentPlayer}
+    return { playRound, getCurrentPlayer, getGameOver }
 
-})();
+})(document);
+
+const DisplayController = (function (doc) {
+
+    const gameContainer = doc.querySelector(".game-container");
+    const board = GameBoard.getBoard();
+    let id = 0;
+    console.log(board)
+
+    const renderCells = () => {
+        board.forEach(el => {
+            const div = doc.createElement("div");
+            div.classList.add("cell");
+            div.setAttribute("id",id)
+            div.textContent = el;
+            gameContainer.appendChild(div);
+            
+            div.addEventListener("click",(event) => {
+                let currentPlayer = GameController.getCurrentPlayer();
+                let playGame = GameController.playRound;
+                let gameOver = GameController.getGameOver();
+                let target = event.target.getAttribute("id");
+
+                if (div.textContent === "" && !gameOver){
+                    div.textContent = currentPlayer.marker;
+                    playGame(currentPlayer.marker,target);
+                }
+                console.log(board)
+            })
+            id+=1;
+        })
+    }
+
+    return{renderCells}
+
+})(document);
+
+DisplayController.renderCells();
+
