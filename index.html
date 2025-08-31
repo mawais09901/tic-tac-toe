@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <div class="header">
         <h1>TIC - TAC - TOE</h1>
     </div>
+    <div class="form-container">
+        <form action="">
+            <div class="inputs-container">
+                <div class="input-box">
+                    <label for="first-player">First Player Name</label>
+                    <input type="text" name="first-player" id="first-player" value="FirstPlayer">
+                </div>
+                <div class="input-box">
+                    <label for="second-player">Second Player Name</label>
+                    <input type="text" name="second-player" id="second-player" value="SecondPlayer">
+                </div>
+                <button type="submit" class="start-button">Start Game</button>
+            </div>
+        </form>
+    </div>
     <div class="game-container"></div>
-    <div class="winning-div"></div>
+    <div class="buttons-container">
+        <button class="restart-button">Restart Game</button>
+        <button class="reset-button">Reset Game</button>
+    </div>
+    <dialog id="winning-dialog">
+        <div class="content">
+            <p></p>
+            <button id="dialog-button">Close</button>
+        </div>
+    </dialog>
     <script src="./script.js"></script>
 </body>
+
 </html>

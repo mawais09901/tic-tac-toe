@@ -24,7 +24,7 @@ body{
 }
 
 .header{
-    height: 80px;
+    height: 60px;
     background-color: var(--header-background);
 
     display: flex;
@@ -44,6 +44,8 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 35px;
+
+    display: none;
 }
 
 .cell{
@@ -62,4 +64,128 @@ body{
 .cell:hover{
     background-color: var(--primary-color);
     color: var(--background-color);
+}
+
+#winning-dialog{
+    width: 700px;
+    height: 100px;
+    background-color: var(--dialog-background);
+    border: none;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-top: 150px;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+dialog button{
+    padding: 8px 30px;
+    border: none;
+    background-color: var(--header-background);
+    color: var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+dialog button:hover{
+    background-color: var(--primary-color);
+    color: var(--header-background);
+}
+
+.buttons-container button{
+    padding: 8px;
+    background-color: var(--header-background);
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: all 0.15s;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    gap: 20px;
+
+    display: none;
+}
+
+.buttons-container button:hover{
+    background-color: var(--primary-color);
+    color: var(--header-background);
+}
+
+.form-container{
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 500px;
+    height: 300px;
+    background-color: var(--header-background);
+    border-radius: 5px;
+}
+
+.start-button{
+    align-self: flex-start;
+    padding: 8px;
+    background-color: var(--background-color);
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 800;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.start-button:hover{
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.inputs-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+input{
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: var(--background-color);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+input:focus{
+    outline: 2px solid white;
 }
